@@ -1,0 +1,13 @@
+@import "variables";
+
+body {
+  background: $grey;
+}
+.toast-success {
+  background-color: $green;
+  color: $white;
+}
+.toast-error {
+  background-color: $red;
+  color: $white;
+}
