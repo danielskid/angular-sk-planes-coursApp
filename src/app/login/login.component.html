@@ -1,0 +1,25 @@
+<div class="row justify-content-center login-form-container">
+  <div class="col-sm-4 shadow login-form-content">
+    <form action="#" (submit)="formSubmit($event)">
+      <img src="./assets/logo_sk.png" alt="SkPlanes Logo" />
+      <h2>Login or register</h2>
+
+      <mat-form-field floatLabel="auto" class="d-block">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" required [(ngModel)]="credentials.email" name="email" />
+        <mat-error>Email is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field floatLabel="auto" class="d-block">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" required [(ngModel)]="credentials.password" name="password" />
+        <mat-error>Password is required</mat-error>
+      </mat-form-field>
+
+      <button (click)="login($event);" mat-raised-button color="primary">LOGIN</button>
+      <p>You don't have an account?</p>
+      <button (click)="register($event)"
+              mat-raised-button color="accent">REGISTER</button>
+    </form>
+  </div>
+</div>

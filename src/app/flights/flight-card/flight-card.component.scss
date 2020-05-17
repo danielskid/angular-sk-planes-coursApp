@@ -1,0 +1,39 @@
+:host {
+  cursor: pointer;
+}
+:host(:hover) {
+  .card-icon {
+    color: white !important;
+    background-color: #673AB7 !important;
+    border-color: #673AB7 !important;
+  }
+}
+
+.mat-card {
+  margin-top: 25px;
+  padding: 25px 40px 15px 40px;
+
+  .mat-card-header {
+    justify-content: center;
+  }
+
+  .card-icon {
+    position: absolute;
+    top: -22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+  }
+
+  .mat-card-content {
+    text-align: center;
+  }
+
+  .mat-card-footer p {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-sm-4" *ngFor="let flight of this.flights$ | async">
+    <app-flight-card [flight]="flight" (click)="showFlightDetails(flight)"></app-flight-card>
+  </div>
+<!--  <mat-icon class="mat-icon add-flight-button" color="primary" (click)="openAddFlightForm()">add_circle</mat-icon>-->
+</div>
+<button class="add-flight-button" mat-mini-fab color="primary" (click)="openAddFlightForm()" aria-label="add new flight button">+</button>
+
+

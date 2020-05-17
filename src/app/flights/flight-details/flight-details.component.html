@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-header>
+    <mat-icon class="mat-icon" mat-card-avatar>flight</mat-icon>
+    <mat-card-title>Flight details</mat-card-title>
+    <mat-card-subtitle>Code: {{ flight.code }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <b>From:</b> {{ flight.origin }}<br>
+    <b>To:</b> {{ flight.destination }}<br>
+
+    <figure *ngIf="flight.crew?.length">
+      <figcaption><b>Crew:</b></figcaption>
+      <ul>
+        <li *ngFor="let crewMember of flight.crew">
+          {{ crewMember.name }}, {{ crewMember.job }}
+        </li>
+      </ul>
+    </figure>
+    <span *ngIf="flight.additionalInformation"><b>Additional information:</b><br>{{ flight.additionalInformation }}</span>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button mat-dialog-close aria-label="close dialog button"><mat-icon>cancel</mat-icon>Close</button>
+    <a [routerLink]="['/dashboard/flights', flight.id]" mat-raised-button mat-dialog-close aria-label="edit flight button"><mat-icon>edit</mat-icon>Edit</a>
+  </mat-card-actions>
+</mat-card>

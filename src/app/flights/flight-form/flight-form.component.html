@@ -1,0 +1,113 @@
+<!--<pre>-->
+<!--  Flight Object-->
+<!--  {{ this.flight | json }}-->
+<!--</pre>-->
+
+<!--<pre>-->
+<!--  Form value:-->
+<!--  {{ flightForm.value | json }}-->
+<!--</pre>-->
+
+<form [formGroup]="flightForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Code</mat-label>
+        <input type="text" #code matInput maxlength="7" formControlName="code" />
+        <mat-hint align="end">{{ code.value.length }}/{{ code.maxLength }}</mat-hint>
+        <mat-error *ngIf="this.flightForm.get('code').hasError('maxlength')">Minimal length for this field is {{ this.flightForm.get('code').errors?.maxlength?.requiredLength }}!</mat-error>
+        <mat-error *ngIf="this.flightForm.get('code').errors?.required">Code is required!</mat-error>
+        <mat-error *ngIf="this.flightForm.get('code').errors?.onlyAlphanumeric">Code should contain only alphanumeric characters!</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Origin</mat-label>
+        <input type="text" matInput formControlName="origin"/>
+        <mat-error *ngIf="this.flightForm.get('origin').errors?.required">This field is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Destination</mat-label>
+        <input type="text" matInput formControlName="destination"/>
+        <mat-error *ngIf="this.flightForm.get('destination').hasError('required')">This field is required!</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Departure time</mat-label>
+        <input type="text" matInput formControlName="departureTime" />
+        <mat-error *ngIf="this.flightForm.get('departureTime').errors?.required">This field is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Return time</mat-label>
+        <input type="text" matInput formControlName="returnTime" />
+        <mat-error *ngIf="this.flightForm.get('departureTime').errors?.required">This field is required!</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Additional information</mat-label>
+        <textarea matInput formControlName="additionalInformation"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <mat-checkbox
+          formControlName="withSKPlanesDiscount"
+          color="primary"
+          >With SK Discount?</mat-checkbox>
+    </div>
+  </div>
+  <div class="crew-container" formArrayName="crew">
+    <div class="row crew-row shadow" *ngFor="let member of crew.controls; index as i" [formGroupName]="i" >
+      <div class="col crew-header">
+        <h6>Crew Member {{ i+1 }}</h6>
+      </div>
+
+      <div class="col">
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="{{ member.get('name').value }}" />
+          <mat-error *ngIf="member.get('name')?.errors?.required">
+            This field is required!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <div class="row">
+          <div class="col-10">
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Job</mat-label>
+              <mat-select formControlName="job" placeholder="choose...">
+                <mat-option
+                  *ngFor="let job of jobs" [value]="job.value">
+                  {{ job.label }}
+                </mat-option>
+              </mat-select>
+              <mat-error>This field is requried!</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-2 text-right">
+            <mat-icon (click)="deleteCrewMember(i)">delete_forever</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button mat-raised-button color="primary"
+            (click)="onAddCrewMemberBtnClick($event)">Add crew member</button>
+  </div>
+</form>

@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "sk-planes",
+      "public": "dist/sk-planes",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

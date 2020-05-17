@@ -1,0 +1,23 @@
+<mat-toolbar class="toolbar" color="primary">
+  <span>
+    <a routerLink="/"><img src="assets/logo_sk.png" alt="SkPlanes Logo" class="toolbar-logo"/></a>
+  </span>
+  <span class="fill-remaining-space"></span>
+  <span>
+    Hello {{ this.user?.email }}
+  </span>
+  <span>
+    <mat-icon role="button" class="mat-icon material-icons mat-icon-no-color" (click)="logout()">power_settings_new</mat-icon>
+  </span>
+</mat-toolbar>
+
+<div class="container">
+  Please look at:
+  <br>
+  <a [routerLink]="['/dashboard/flights']">Show all flights</a>
+  <br>
+  <a [routerLink]="['/dashboard/flights/', '-LERFpJBFcPd9ucEd570']">Flight -LERFpJBFcPd9ucEd570</a>
+
+  <!--<router-outlet name="dashboardRouterOutlet"></router-outlet>-->
+  <router-outlet></router-outlet>
+</div>

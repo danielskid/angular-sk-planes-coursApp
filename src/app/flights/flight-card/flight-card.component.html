@@ -1,0 +1,15 @@
+<mat-card class="shadow">
+  <mat-card-header>
+    <mat-icon class="mat-icon card-icon" mat-card-avatar>flight</mat-icon>
+  </mat-card-header>
+  <mat-card-content>
+    <h4>{{ flight.origin }}</h4>
+    <h4>{{ flight.destination }}</h4>
+  </mat-card-content>
+  <mat-card-footer>
+    <p class="text-right">
+      departure: {{ flight.departureTime }}<br>
+      arrival: {{ flight.returnTime }}<br>
+    </p>
+  </mat-card-footer>
+</mat-card>
